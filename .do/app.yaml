@@ -6,9 +6,8 @@ domains:
   type: ALIAS
 static_sites:
 - name: web
-  github:
-    repo: Hell0pr0to/pulse-and-heritage
+  git:
+    repo_clone_url: https://github.com/Hell0pr0to/pulse-and-heritage.git
     branch: main
-    deploy_on_push: true
   build_command: npm install && npm run build
   output_dir: dist
