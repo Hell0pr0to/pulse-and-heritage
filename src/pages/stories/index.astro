@@ -1,17 +1,23 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import Hero from '@components/Hero.astro';
+import HeroWithImage from '@components/HeroWithImage.astro';
 import CTA from '@components/CTA.astro';
+import familyImg from '@/assets/images/stories-family.jpg';
 ---
 
 <BaseLayout
   title="Community Stories"
   description="First-person narratives from misdiagnosis survivors, veteran health journeys, and the people doing this work."
 >
-  <Hero
+  <HeroWithImage
     eyebrow="Pillar 06"
     headline="Community Stories"
     subhead="The data tells one story. The people living inside it tell another. Both matter."
+    image={familyImg}
+    imageAlt="A grandfather and children together outdoors — the multigenerational stakes of health equity."
+    imageCredit="Nappy"
+    imageCreditUrl="https://nappy.co"
+    treatment="standard"
   />
 
   <section class="py-16 max-w-3xl mx-auto px-6">

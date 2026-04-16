@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CTA from '@components/CTA.astro';
+import Figure from '@components/Figure.astro';
+import generations from '@/assets/images/about-generations.jpg';
 ---
 
 <BaseLayout
@@ -51,6 +53,16 @@ import CTA from '@components/CTA.astro';
       </p>
 
       <h2>Why this site exists</h2>
+
+      <Figure
+        src={generations}
+        alt="An older couple in an intimate, quiet moment — the generations whose health stories the system has too often failed."
+        caption="The work is for the people the system has long failed to see clearly — and for the generations who deserved better."
+        credit="Nappy"
+        creditUrl="https://nappy.co"
+        treatment="mono"
+        aspect="wide"
+      />
 
       <p>
         Seeing healthcare from both perspectives — as a veteran and as a

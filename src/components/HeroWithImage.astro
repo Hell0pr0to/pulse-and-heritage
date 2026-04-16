@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  subhead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  imageCredit?: string;
+  imageCreditUrl?: string;
+  treatment?: 'standard' | 'duotone' | 'mono';
+}
+
+const {
+  eyebrow,
+  headline,
+  subhead,
+  ctaLabel,
+  ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
+  image,
+  imageAlt,
+  imageCredit,
+  imageCreditUrl,
+  treatment = 'standard',
+} = Astro.props;
+
+const treatmentClass = {
+  standard: '',
+  duotone: 'sepia-[.25] saturate-75 contrast-105',
+  mono: 'grayscale contrast-110',
+}[treatment];
+---
+
+<section class="bg-heritage-50 border-b border-heritage-100">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center px-6 py-16 lg:py-20">
+    <div class="lg:col-span-6 order-2 lg:order-1">
+      {
+        eyebrow && (
+          <p class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-5">
+            {eyebrow}
+          </p>
+        )
+      }
+      <h1
+        class="font-serif text-4xl md:text-5xl lg:text-6xl text-heritage-900 leading-tight tracking-tight"
+        style="font-family: var(--font-serif);"
+      >
+        {headline}
+      </h1>
+      {
+        subhead && (
+          <p class="mt-6 text-lg text-ink-700 leading-relaxed">{subhead}</p>
+        )
+      }
+      {
+        (ctaLabel || secondaryCtaLabel) && (
+          <div class="mt-8 flex flex-wrap gap-4">
+            {ctaLabel && ctaHref && (
+              <a
+                href={ctaHref}
+                class="inline-flex items-center px-6 py-3 bg-pulse-600 text-ink-50 font-semibold rounded-md hover:bg-pulse-700 transition-colors"
+              >
+                {ctaLabel}
+              </a>
+            )}
+            {secondaryCtaLabel && secondaryCtaHref && (
+              <a
+                href={secondaryCtaHref}
+                class="inline-flex items-center px-6 py-3 border-2 border-heritage-700 text-heritage-800 font-semibold rounded-md hover:bg-heritage-100 transition-colors"
+              >
+                {secondaryCtaLabel}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    <div class="lg:col-span-6 order-1 lg:order-2">
+      <figure class="relative">
+        <div class="aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-lg bg-heritage-200">
+          <Image
+            src={image}
+            alt={imageAlt}
+            loading="eager"
+            decoding="async"
+            class={`w-full h-full object-cover ${treatmentClass}`}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+        </div>
+        {
+          imageCredit && (
+            <figcaption class="absolute bottom-3 right-3 text-xs text-ink-50 bg-heritage-900/70 backdrop-blur-sm px-2 py-1 rounded">
+              Photo:{' '}
+              {imageCreditUrl ? (
+                <a href={imageCreditUrl} class="underline" target="_blank" rel="noopener">
+                  {imageCredit}
+                </a>
+              ) : (
+                imageCredit
+              )}
+            </figcaption>
+          )
+        }
+      </figure>
+    </div>
+  </div>
+</section>

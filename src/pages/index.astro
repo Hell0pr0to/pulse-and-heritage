@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import Hero from '@components/Hero.astro';
+import HeroWithImage from '@components/HeroWithImage.astro';
 import PillarGrid from '@components/PillarGrid.astro';
 import CTA from '@components/CTA.astro';
+import heroClinical from '@/assets/images/hero-clinical.jpg';
 ---
 
 <BaseLayout title="Pulse & Heritage">
-  <Hero
+  <HeroWithImage
     eyebrow="Health equity, written by a clinician who lived it"
     headline="Because everyone deserves to be seen, heard, and treated appropriately."
     subhead="Pulse & Heritage is health equity content for veterans and people of color — written by an AANP board-certified Family Nurse Practitioner and U.S. combat veteran. Clinically precise. Universally clear."
@@ -14,6 +15,11 @@ import CTA from '@components/CTA.astro';
     ctaHref="/articles/"
     secondaryCtaLabel="Meet Allison"
     secondaryCtaHref="/about/"
+    image={heroClinical}
+    imageAlt="A clinician taking a patient's blood pressure during a routine exam — the kind of everyday clinical encounter where bias most often shapes outcomes."
+    imageCredit="Nappy"
+    imageCreditUrl="https://nappy.co"
+    treatment="duotone"
   />
 
   <section class="py-20 max-w-4xl mx-auto px-6">

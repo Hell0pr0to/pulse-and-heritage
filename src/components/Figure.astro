@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  creditUrl?: string;
+  treatment?: 'standard' | 'duotone' | 'mono';
+  aspect?: 'wide' | 'portrait' | 'square' | 'auto';
+  priority?: boolean;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  credit,
+  creditUrl,
+  treatment = 'standard',
+  aspect = 'auto',
+  priority = false,
+} = Astro.props;
+
+const aspectClass = {
+  wide: 'aspect-[16/9]',
+  portrait: 'aspect-[3/4]',
+  square: 'aspect-square',
+  auto: '',
+}[aspect];
+
+const treatmentClass = {
+  standard: '',
+  duotone: 'sepia-[.3] saturate-50 contrast-105',
+  mono: 'grayscale contrast-110',
+}[treatment];
+---
+
+<figure class="my-10">
+  <div class={`overflow-hidden rounded-lg bg-heritage-100 ${aspectClass}`}>
+    <Image
+      src={src}
+      alt={alt}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      class={`w-full h-full object-cover ${treatmentClass}`}
+      widths={[640, 960, 1280, 1920]}
+      sizes="(min-width: 1024px) 1024px, 100vw"
+    />
+  </div>
+  {
+    (caption || credit) && (
+      <figcaption class="mt-3 text-sm text-ink-600 flex flex-col sm:flex-row sm:justify-between gap-2">
+        {caption && <span>{caption}</span>}
+        {credit && (
+          <span class="text-xs text-ink-500 italic">
+            Photo:{' '}
+            {creditUrl ? (
+              <a
+                href={creditUrl}
+                class="hover:text-pulse-600 underline"
+                target="_blank"
+                rel="noopener"
+              >
+                {credit}
+              </a>
+            ) : (
+              credit
+            )}
+          </span>
+        )}
+      </figcaption>
+    )
+  }
+</figure>
