@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const conditions = await getCollection('conditions', ({ data }) => !data.draft);
+  return conditions.map((condition) => ({
+    params: { slug: condition.id },
+    props: { condition },
+  }));
+}
+
+interface Props {
+  condition: CollectionEntry<'conditions'>;
+}
+
+const { condition } = Astro.props;
+const { Content } = await render(condition);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={condition.data.name} description={condition.data.summary}>
+  <article class="py-16 max-w-3xl mx-auto px-6">
+    <header class="mb-10 pb-10 border-b border-ink-200">
+      <p class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-4">
+        {condition.data.category}
+      </p>
+      <h1
+        class="font-serif text-4xl md:text-5xl text-heritage-900 leading-tight tracking-tight"
+        style="font-family: var(--font-serif);"
+      >
+        {condition.data.name}
+      </h1>
+      <p class="mt-5 text-xl text-ink-700 leading-relaxed">
+        {condition.data.summary}
+      </p>
+      <p class="mt-6 text-sm text-ink-500">
+        Last updated {dateFmt.format(condition.data.updatedDate)}
+      </p>
+    </header>
+
+    <section class="mb-10 grid gap-8 md:grid-cols-2">
+      <div class="p-6 bg-ink-50 border border-ink-200 rounded-lg">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-pulse-600 mb-3">
+          Who is most affected
+        </h2>
+        <ul class="space-y-2 text-sm text-ink-700 list-disc pl-5">
+          {condition.data.affectedPopulations.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <div class="p-6 bg-ink-50 border border-ink-200 rounded-lg">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-pulse-600 mb-3">
+          Key disparities
+        </h2>
+        <ul class="space-y-2 text-sm text-ink-700 list-disc pl-5">
+          {condition.data.keyDisparities.map((d) => <li>{d}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <div class="prose-editorial">
+      <Content />
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-ink-200">
+      <a
+        href="/conditions/"
+        class="text-sm font-semibold text-pulse-600 hover:text-pulse-700"
+      >
+        ← All conditions
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

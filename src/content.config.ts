@@ -38,6 +38,7 @@ const conditions = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/conditions' }),
   schema: z.object({
     name: z.string(),
+    category: z.string(),
     slug: z.string().optional(),
     summary: z.string(),
     affectedPopulations: z.array(z.string()),
