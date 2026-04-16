@@ -1,0 +1,69 @@
+---
+import Card from './Card.astro';
+
+const pillars = [
+  {
+    eyebrow: 'Pillar 01',
+    title: 'Conditions & Disparities',
+    summary:
+      'Diabetes, kidney disease, heart disease, sickle cell, maternal health — what they look like in our communities and why outcomes diverge.',
+    href: '/conditions/',
+  },
+  {
+    eyebrow: 'Pillar 02',
+    title: 'Misdiagnosis & Underdiagnosis',
+    summary:
+      'Pain assessment bias, diagnostic algorithm bias, dermatology on dark skin, eGFR racial corrections — and how to push back.',
+    href: '/misdiagnosis/',
+  },
+  {
+    eyebrow: 'Pillar 03',
+    title: 'Veteran Health Equity',
+    summary:
+      'VA system navigation, service-connected disability claims, toxic exposure, and the gaps that hit Black veterans hardest.',
+    href: '/veteran-health/',
+  },
+  {
+    eyebrow: 'Pillar 04',
+    title: 'Self-Advocacy Tools',
+    summary:
+      'Doctor visit checklists, "know your numbers" guides, second-opinion templates — practical tools you can print and bring with you.',
+    href: '/self-advocacy/',
+  },
+  {
+    eyebrow: 'Pillar 05',
+    title: 'Financial Health',
+    summary:
+      'Healthcare costs, VA benefits, insurance literacy, and predatory product awareness — financial empowerment is health equity.',
+    href: '/financial-health/',
+  },
+  {
+    eyebrow: 'Pillar 06',
+    title: 'Community & Stories',
+    summary:
+      'First-person narratives from misdiagnosis survivors, veteran health journeys, and the people doing this work.',
+    href: '/stories/',
+  },
+];
+---
+
+<section class="py-20 bg-ink-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl mb-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-3">
+        What we cover
+      </p>
+      <h2 class="text-3xl md:text-4xl font-semibold text-heritage-900 tracking-tight">
+        Six pillars. One mission.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        Health doesn't happen in isolation. Neither does the system that fails
+        to deliver it equitably. These are the pillars we cover and the threads
+        that connect them.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {pillars.map((p) => <Card {...p} />)}
+    </div>
+  </div>
+</section>

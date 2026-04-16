@@ -1,0 +1,14 @@
+name: pulse-and-heritage
+domains:
+- domain: pulseandheritage.com
+  type: PRIMARY
+- domain: www.pulseandheritage.com
+  type: ALIAS
+static_sites:
+- name: web
+  github:
+    repo: Hell0pr0to/pulse-and-heritage
+    branch: main
+    deploy_on_push: true
+  build_command: npm install && npm run build
+  output_dir: dist

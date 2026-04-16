@@ -1,0 +1,30 @@
+---
+interface Props {
+  headline: string;
+  body?: string;
+  ctaLabel: string;
+  ctaHref: string;
+  variant?: 'pulse' | 'heritage';
+}
+
+const { headline, body, ctaLabel, ctaHref, variant = 'pulse' } = Astro.props;
+
+const bgClass = variant === 'pulse' ? 'bg-pulse-600' : 'bg-heritage-800';
+const buttonClass =
+  variant === 'pulse'
+    ? 'bg-ink-50 text-pulse-700 hover:bg-ink-100'
+    : 'bg-service-400 text-heritage-900 hover:bg-service-300';
+---
+
+<section class={`${bgClass} text-ink-50 my-16`}>
+  <div class="max-w-4xl mx-auto px-6 py-14 text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">{headline}</h2>
+    {body && <p class="mt-4 text-lg opacity-90 max-w-2xl mx-auto">{body}</p>}
+    <a
+      href={ctaHref}
+      class={`mt-8 inline-flex items-center px-8 py-3 font-semibold rounded-md transition-colors ${buttonClass}`}
+    >
+      {ctaLabel}
+    </a>
+  </div>
+</section>

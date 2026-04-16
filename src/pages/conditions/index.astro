@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Card from '@components/Card.astro';
+
+const conditions = [
+  {
+    title: 'Type 2 Diabetes',
+    summary: 'Twice the prevalence in Black communities, later diagnosis, and A1C accuracy issues with sickle cell trait.',
+    href: '/conditions/diabetes/',
+    eyebrow: 'Endocrine',
+  },
+  {
+    title: 'Chronic Kidney Disease',
+    summary: 'The eGFR racial correction, APOL1 gene variants, and dialysis access disparities.',
+    href: '/conditions/kidney-disease/',
+    eyebrow: 'Renal',
+  },
+  {
+    title: 'Heart Disease & Hypertension',
+    summary: 'The #1 killer in Black men, salt sensitivity genetics, and stress-induced cardiomyopathy.',
+    href: '/conditions/heart-disease/',
+    eyebrow: 'Cardiovascular',
+  },
+  {
+    title: 'Sickle Cell Disease',
+    summary: 'Underfunded, undertreated, and mismanaged pain crises — a system-wide failure.',
+    href: '/conditions/sickle-cell/',
+    eyebrow: 'Hematology',
+  },
+  {
+    title: 'Mental Health',
+    summary: 'PTSD in veterans, depression misdiagnosed as aggression, and cultural barriers to care.',
+    href: '/conditions/mental-health/',
+    eyebrow: 'Behavioral',
+  },
+  {
+    title: 'Maternal Health',
+    summary: 'The Black maternal mortality crisis, dismissed pain, and preeclampsia.',
+    href: '/conditions/maternal-health/',
+    eyebrow: 'OB/GYN',
+  },
+];
+---
+
+<BaseLayout
+  title="Conditions & Disparities"
+  description="Conditions disproportionately affecting veterans and people of color — what they look like, why outcomes diverge, and what to ask your provider."
+>
+  <Hero
+    eyebrow="Pillar 01"
+    headline="Conditions & Disparities"
+    subhead="The conditions that hit our communities hardest — and why the same diagnosis often comes with different outcomes depending on who's receiving it."
+  />
+
+  <section class="py-16 max-w-6xl mx-auto px-6">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {conditions.map((c) => <Card {...c} />)}
+    </div>
+  </section>
+</BaseLayout>

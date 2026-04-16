@@ -1,0 +1,70 @@
+---
+const navItems = [
+  { label: 'Conditions', href: '/conditions/' },
+  { label: 'Misdiagnosis', href: '/misdiagnosis/' },
+  { label: 'Veteran Health', href: '/veteran-health/' },
+  { label: 'Self-Advocacy', href: '/self-advocacy/' },
+  { label: 'Stories', href: '/stories/' },
+  { label: 'About', href: '/about/' },
+];
+---
+
+<header class="border-b border-ink-200 bg-ink-50">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-8">
+    <a
+      href="/"
+      class="flex items-center gap-3 group"
+      aria-label="Pulse & Heritage — home"
+    >
+      <span class="text-2xl font-semibold text-heritage-800 tracking-tight">
+        Pulse <span class="text-pulse-500">&</span> Heritage
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-7 text-sm font-medium text-ink-700">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="hover:text-pulse-600 transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <details class="md:hidden relative">
+      <summary class="list-none cursor-pointer p-2" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </summary>
+      <nav
+        aria-label="Mobile"
+        class="absolute right-0 top-full mt-2 bg-ink-50 border border-ink-200 rounded-lg shadow-lg min-w-48 z-10"
+      >
+        <ul class="py-2">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="block px-5 py-2 text-sm text-ink-700 hover:bg-ink-100 hover:text-pulse-600"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTA from '@components/CTA.astro';
+---
+
+<BaseLayout
+  title="Community Stories"
+  description="First-person narratives from misdiagnosis survivors, veteran health journeys, and the people doing this work."
+>
+  <Hero
+    eyebrow="Pillar 06"
+    headline="Community Stories"
+    subhead="The data tells one story. The people living inside it tell another. Both matter."
+  />
+
+  <section class="py-16 max-w-3xl mx-auto px-6">
+    <p class="text-lg text-ink-700 leading-relaxed">
+      We're collecting first-person narratives from people who have navigated
+      misdiagnosis, dismissal, and the long road back to being heard. From
+      veterans whose PTSD was missed for years. From mothers whose pain was
+      dismissed. From patients whose kidney function was hidden behind a flawed
+      formula. If you have a story to share, we want to hear it — and we will
+      treat it with the care it deserves.
+    </p>
+  </section>
+
+  <CTA
+    headline="Submit your story."
+    body="We review every submission. Sharing is optional. Anonymity is available. Your voice belongs in this work."
+    ctaLabel="Share your story"
+    ctaHref="/stories/submit/"
+  />
+</BaseLayout>

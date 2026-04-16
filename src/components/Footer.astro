@@ -1,0 +1,46 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-heritage-900 text-ink-200 mt-16">
+  <div class="max-w-6xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <p class="text-xl font-semibold text-ink-50">
+        Pulse <span class="text-pulse-400">&</span> Heritage
+      </p>
+      <p class="mt-3 text-sm text-ink-300 leading-relaxed max-w-md">
+        Because everyone deserves to be seen, heard, and treated appropriately.
+        Clinically grounded health equity content for veterans and people of color.
+      </p>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-ink-50 uppercase tracking-wide">Explore</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><a href="/conditions/" class="hover:text-pulse-300">Conditions</a></li>
+        <li><a href="/misdiagnosis/" class="hover:text-pulse-300">Misdiagnosis</a></li>
+        <li><a href="/veteran-health/" class="hover:text-pulse-300">Veteran Health</a></li>
+        <li><a href="/self-advocacy/" class="hover:text-pulse-300">Self-Advocacy</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-ink-50 uppercase tracking-wide">About</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><a href="/about/" class="hover:text-pulse-300">About Allison</a></li>
+        <li><a href="/stories/" class="hover:text-pulse-300">Community Stories</a></li>
+        <li><a href="/contact/" class="hover:text-pulse-300">Contact</a></li>
+        <li><a href="/privacy/" class="hover:text-pulse-300">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-heritage-700">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between gap-3 text-xs text-ink-400">
+      <p>&copy; {year} Pulse & Heritage. All rights reserved.</p>
+      <p class="max-w-xl md:text-right">
+        Educational content. Not a substitute for medical advice, diagnosis, or treatment from a qualified clinician.
+      </p>
+    </div>
+  </div>
+</footer>

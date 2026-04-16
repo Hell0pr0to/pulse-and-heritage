@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Card from '@components/Card.astro';
+
+const topics = [
+  {
+    title: 'Pain Assessment Bias',
+    summary: 'Studies consistently show Black patients receive less pain medication for the same complaint. Here\'s the data and what it means for you.',
+    href: '/misdiagnosis/pain-assessment/',
+  },
+  {
+    title: 'Dermatology on Dark Skin',
+    summary: 'Melanoma, eczema, lupus rashes — many are missed because medical training centers light skin presentations.',
+    href: '/misdiagnosis/dermatology/',
+  },
+  {
+    title: 'The eGFR Racial Correction',
+    summary: 'Until 2021, the formula estimating your kidney function had a built-in racial adjustment. The damage outlasted the formula.',
+    href: '/misdiagnosis/egfr/',
+  },
+  {
+    title: 'Diagnostic Algorithm Bias',
+    summary: 'Race-based corrections in pulmonary function, cardiac risk scores, and beyond — algorithms inheriting decades of bad assumptions.',
+    href: '/misdiagnosis/algorithm-bias/',
+  },
+  {
+    title: 'Sickle Cell: Trait vs. Disease',
+    summary: 'Confusion between sickle cell trait and disease has led to wrong treatment, denied care, and preventable deaths.',
+    href: '/misdiagnosis/sickle-cell/',
+  },
+  {
+    title: 'Mental Health Misdiagnosis',
+    summary: 'Black patients are more likely to be diagnosed with schizophrenia and less likely with depression — when symptoms are identical.',
+    href: '/misdiagnosis/mental-health/',
+  },
+];
+---
+
+<BaseLayout
+  title="Misdiagnosis & Underdiagnosis"
+  description="The systemic failures that lead to missed and wrong diagnoses for people of color and veterans — and what to do about them."
+>
+  <Hero
+    eyebrow="Pillar 02"
+    headline="Misdiagnosis & Underdiagnosis"
+    subhead="Not a footnote. A first-class topic. The diagnostic bias that shapes outcomes for veterans and people of color — named, sourced, and met with practical pushback."
+  />
+
+  <section class="py-16 max-w-6xl mx-auto px-6">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {topics.map((t) => <Card {...t} />)}
+    </div>
+  </section>
+</BaseLayout>

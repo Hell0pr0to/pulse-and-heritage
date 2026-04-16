@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Card from '@components/Card.astro';
+
+const tools = [
+  {
+    title: 'Doctor Visit Question Checklist',
+    summary: 'Printable checklist of questions to bring to your next appointment — organized by condition.',
+    href: '/self-advocacy/doctor-visit-checklist/',
+    eyebrow: 'Checklist',
+  },
+  {
+    title: 'Know Your Numbers',
+    summary: 'A1C, eGFR, BP, cholesterol — what the numbers mean, what the targets are, and where racial disparities show up in reference ranges.',
+    href: '/self-advocacy/know-your-numbers/',
+    eyebrow: 'Guide',
+  },
+  {
+    title: 'Requesting a Second Opinion',
+    summary: 'Templates for requesting your records, finding another provider, and changing care without losing continuity.',
+    href: '/self-advocacy/second-opinion/',
+    eyebrow: 'Template',
+  },
+  {
+    title: 'Medical Records Request',
+    summary: 'Your records belong to you. Here\'s how to get them, what to look for, and what to do when something\'s wrong.',
+    href: '/self-advocacy/medical-records/',
+    eyebrow: 'Template',
+  },
+  {
+    title: 'Symptom Journal',
+    summary: 'Pre-built tracking sheets for high-risk conditions — designed to capture what providers actually need to see.',
+    href: '/self-advocacy/symptom-journal/',
+    eyebrow: 'Tracker',
+  },
+  {
+    title: 'When to Push Back',
+    summary: 'Specific phrases and clinical questions that signal you\'re informed — and what to do when you\'re still being dismissed.',
+    href: '/self-advocacy/push-back/',
+    eyebrow: 'Guide',
+  },
+];
+---
+
+<BaseLayout
+  title="Self-Advocacy Tools"
+  description="Practical, printable tools for navigating healthcare with confidence — designed by a clinician for the people the system most often fails."
+>
+  <Hero
+    eyebrow="Pillar 04"
+    headline="Self-Advocacy Tools"
+    subhead="Print them. Bring them. Use them. These are the tools I wish more of my patients had walked in with."
+  />
+
+  <section class="py-16 max-w-6xl mx-auto px-6">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {tools.map((t) => <Card {...t} />)}
+    </div>
+  </section>
+</BaseLayout>

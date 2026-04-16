@@ -1,0 +1,68 @@
+---
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  subhead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+}
+
+const {
+  eyebrow,
+  headline,
+  subhead,
+  ctaLabel,
+  ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
+} = Astro.props;
+---
+
+<section class="bg-heritage-50 border-b border-heritage-100">
+  <div class="max-w-5xl mx-auto px-6 py-20 md:py-28">
+    {
+      eyebrow && (
+        <p class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-5">
+          {eyebrow}
+        </p>
+      )
+    }
+    <h1
+      class="font-serif text-4xl md:text-6xl text-heritage-900 leading-tight tracking-tight max-w-4xl"
+      style="font-family: var(--font-serif);"
+    >
+      {headline}
+    </h1>
+    {
+      subhead && (
+        <p class="mt-6 text-lg md:text-xl text-ink-700 leading-relaxed max-w-2xl">
+          {subhead}
+        </p>
+      )
+    }
+    {
+      (ctaLabel || secondaryCtaLabel) && (
+        <div class="mt-10 flex flex-wrap gap-4">
+          {ctaLabel && ctaHref && (
+            <a
+              href={ctaHref}
+              class="inline-flex items-center px-6 py-3 bg-pulse-600 text-ink-50 font-semibold rounded-md hover:bg-pulse-700 transition-colors"
+            >
+              {ctaLabel}
+            </a>
+          )}
+          {secondaryCtaLabel && secondaryCtaHref && (
+            <a
+              href={secondaryCtaHref}
+              class="inline-flex items-center px-6 py-3 border-2 border-heritage-700 text-heritage-800 font-semibold rounded-md hover:bg-heritage-100 transition-colors"
+            >
+              {secondaryCtaLabel}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>

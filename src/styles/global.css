@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  /*
+   * Pulse & Heritage — Design Tokens
+   *
+   * Color palette philosophy:
+   * - Deep, grounded primary (heritage / earth tones) — not corporate blue
+   * - Warm accent (pulse / vitality) — signals life, urgency, action
+   * - High-contrast neutrals for accessibility (WCAG AA minimum)
+   * - Avoids medical-white sterility
+   */
+
+  /* Heritage — deep, grounded primary */
+  --color-heritage-50: #f6f4f0;
+  --color-heritage-100: #e9e3d8;
+  --color-heritage-200: #d2c5b0;
+  --color-heritage-300: #b5a283;
+  --color-heritage-400: #998460;
+  --color-heritage-500: #7d6a4c;
+  --color-heritage-600: #61533c;
+  --color-heritage-700: #463c2c;
+  --color-heritage-800: #2c261c;
+  --color-heritage-900: #1a1612;
+  --color-heritage-950: #0f0c0a;
+
+  /* Pulse — warm accent (vitality, urgency) */
+  --color-pulse-50: #fef3f2;
+  --color-pulse-100: #fee4e2;
+  --color-pulse-200: #fecdca;
+  --color-pulse-300: #fda29b;
+  --color-pulse-400: #f97066;
+  --color-pulse-500: #c4322e;
+  --color-pulse-600: #a01e1a;
+  --color-pulse-700: #7a1614;
+  --color-pulse-800: #5c1110;
+  --color-pulse-900: #3e0b0a;
+
+  /* Service — gold/honor (veteran service ribbon palette) */
+  --color-service-50: #fdf9ec;
+  --color-service-100: #faf0c5;
+  --color-service-200: #f5df8a;
+  --color-service-300: #efc94c;
+  --color-service-400: #d4a72c;
+  --color-service-500: #a37f1f;
+  --color-service-600: #7a5e16;
+
+  /* Neutrals — warm grays (not cold blue-gray) */
+  --color-ink-50: #faf9f7;
+  --color-ink-100: #f0eeea;
+  --color-ink-200: #ddd9d2;
+  --color-ink-300: #b8b1a5;
+  --color-ink-400: #8e8678;
+  --color-ink-500: #6b6457;
+  --color-ink-600: #4d4840;
+  --color-ink-700: #36322c;
+  --color-ink-800: #22201c;
+  --color-ink-900: #14130f;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Editorial type scale */
+  --text-display: 4rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-headline: 2.5rem;
+  --text-headline--line-height: 1.15;
+  --text-headline--letter-spacing: -0.015em;
+
+  --text-title: 1.75rem;
+  --text-title--line-height: 1.25;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+}
+
+/* Base styles */
+html {
+  font-family: var(--font-sans);
+  color: var(--color-ink-800);
+  background-color: var(--color-ink-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+
+/* Editorial type for long-form content */
+.prose-editorial {
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  color: var(--color-ink-800);
+  max-width: 68ch;
+}
+
+.prose-editorial h2 {
+  font-family: var(--font-sans);
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-heritage-800);
+}
+
+.prose-editorial h3 {
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-heritage-700);
+}
+
+.prose-editorial p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-editorial a {
+  color: var(--color-pulse-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose-editorial a:hover {
+  color: var(--color-pulse-700);
+  text-decoration-thickness: 2px;
+}
+
+.prose-editorial blockquote {
+  border-left: 3px solid var(--color-pulse-500);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--color-ink-700);
+}
+
+/* Print styles for tools/checklists */
+@media print {
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+    font-size: 11pt;
+  }
+}
+
+/* Focus visible — accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-pulse-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-heritage-800);
+  color: var(--color-ink-50);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0;
+}

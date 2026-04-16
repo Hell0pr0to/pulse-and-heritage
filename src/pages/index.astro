@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import PillarGrid from '@components/PillarGrid.astro';
+import CTA from '@components/CTA.astro';
+---
+
+<BaseLayout title="Pulse & Heritage">
+  <Hero
+    eyebrow="Health equity, written by a clinician who lived it"
+    headline="Because everyone deserves to be seen, heard, and treated appropriately."
+    subhead="Pulse & Heritage is health equity content for veterans and people of color — written by an AANP board-certified Family Nurse Practitioner and U.S. combat veteran. Clinically precise. Universally clear."
+    ctaLabel="Read the latest"
+    ctaHref="/articles/"
+    secondaryCtaLabel="Meet Allison"
+    secondaryCtaHref="/about/"
+  />
+
+  <section class="py-20 max-w-4xl mx-auto px-6">
+    <p class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-4">
+      Why this exists
+    </p>
+    <p
+      class="text-2xl md:text-3xl text-heritage-900 leading-snug"
+      style="font-family: var(--font-serif);"
+    >
+      In high-acuity care — ICU, oncology, cardiac procedures — and in a VA
+      clinic seeing veterans manage complex conditions, the same patterns
+      surfaced. Who gets heard. Who gets dismissed. Whose pain is taken
+      seriously. Whose symptoms are explained away. These patterns are most
+      visible at the intersection of race, background, and military service.
+      This site exists to name them — and to put practical tools in the hands
+      of the people the system most often fails.
+    </p>
+    <p class="mt-6 text-base text-ink-600 italic">
+      — Allison Smith, MSN, FNP-C
+    </p>
+  </section>
+
+  <PillarGrid />
+
+  <CTA
+    headline="Get the next piece in your inbox."
+    body="No spam, no sales funnels. Just clinical clarity, plainly written, when there's something worth reading."
+    ctaLabel="Subscribe"
+    ctaHref="/subscribe/"
+    variant="heritage"
+  />
+</BaseLayout>

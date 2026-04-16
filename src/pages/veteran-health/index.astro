@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Card from '@components/Card.astro';
+
+const topics = [
+  {
+    title: 'VA Healthcare Navigation',
+    summary: 'How the VA system actually works — enrollment, priority groups, community care eligibility, and how to escalate when you\'re stuck.',
+    href: '/veteran-health/va-navigation/',
+  },
+  {
+    title: 'Service-Connected Disability Claims',
+    summary: 'Racial disparities exist in claim approval rates. Here\'s what to know going in and how to strengthen your filing.',
+    href: '/veteran-health/disability-claims/',
+  },
+  {
+    title: 'Toxic Exposure',
+    summary: 'Burn pits, Camp Lejeune, Agent Orange — what\'s covered under the PACT Act and what to document.',
+    href: '/veteran-health/toxic-exposure/',
+  },
+  {
+    title: 'Mental Health & PTSD',
+    summary: 'Why PTSD is underdiagnosed in Black veterans, and the cultural and systemic barriers that keep it that way.',
+    href: '/veteran-health/mental-health/',
+  },
+  {
+    title: 'Transitioning Care',
+    summary: 'Moving from military to civilian healthcare as a person of color — what changes, what doesn\'t, and what to plan for.',
+    href: '/veteran-health/transitioning/',
+  },
+  {
+    title: 'MST & Combat Trauma',
+    summary: 'Military sexual trauma and combat-related conditions — how the VA evaluates them and how to document for your claim.',
+    href: '/veteran-health/trauma/',
+  },
+];
+---
+
+<BaseLayout
+  title="Veteran Health Equity"
+  description="VA system navigation, service-connected disability claims, and the health equity gaps that hit veterans of color hardest."
+>
+  <Hero
+    eyebrow="Pillar 03"
+    headline="Veteran Health Equity"
+    subhead="Written by someone who has both served and provided care inside the VA system. Practical navigation. Honest assessment of the gaps."
+  />
+
+  <section class="py-16 max-w-6xl mx-auto px-6">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {topics.map((t) => <Card {...t} />)}
+    </div>
+  </section>
+</BaseLayout>
