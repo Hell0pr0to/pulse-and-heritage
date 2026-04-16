@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const pillarLabels: Record<string, string> = {
+  conditions: 'Conditions & Disparities',
+  misdiagnosis: 'Misdiagnosis & Underdiagnosis',
+  'veteran-health': 'Veteran Health Equity',
+  'self-advocacy': 'Self-Advocacy Tools',
+  'financial-health': 'Financial Health',
+  community: 'Community & Stories',
+};
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={article.data.title} description={article.data.summary}>
+  <article class="py-16 max-w-3xl mx-auto px-6">
+    <header class="mb-10 pb-10 border-b border-ink-200">
+      <p class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-4">
+        {pillarLabels[article.data.pillar]}
+      </p>
+      <h1
+        class="font-serif text-4xl md:text-5xl text-heritage-900 leading-tight tracking-tight"
+        style="font-family: var(--font-serif);"
+      >
+        {article.data.title}
+      </h1>
+      {
+        article.data.subtitle && (
+          <p class="mt-5 text-xl text-ink-700 leading-relaxed">
+            {article.data.subtitle}
+          </p>
+        )
+      }
+      <p class="mt-6 text-sm text-ink-500">
+        By {article.data.author} · {dateFmt.format(article.data.pubDate)}
+        {article.data.readingTime && ` · ${article.data.readingTime} min read`}
+      </p>
+    </header>
+
+    <div class="prose-editorial">
+      <Content />
+    </div>
+
+    {
+      article.data.sources.length > 0 && (
+        <aside class="mt-16 pt-8 border-t border-ink-200">
+          <h2 class="text-sm font-semibold uppercase tracking-widest text-pulse-600 mb-4">
+            Sources
+          </h2>
+          <ol class="list-decimal pl-5 space-y-2 text-sm text-ink-700">
+            {article.data.sources.map((source) => (
+              <li>
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="underline text-pulse-600 hover:text-pulse-700"
+                >
+                  {source.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+      )
+    }
+
+    <footer class="mt-12 pt-8 border-t border-ink-200">
+      <a
+        href="/articles/"
+        class="text-sm font-semibold text-pulse-600 hover:text-pulse-700"
+      >
+        ← All articles
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

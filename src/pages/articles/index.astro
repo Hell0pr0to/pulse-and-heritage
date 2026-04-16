@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Card from '@components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const pillarLabels: Record<string, string> = {
+  conditions: 'Conditions & Disparities',
+  misdiagnosis: 'Misdiagnosis & Underdiagnosis',
+  'veteran-health': 'Veteran Health Equity',
+  'self-advocacy': 'Self-Advocacy Tools',
+  'financial-health': 'Financial Health',
+  community: 'Community & Stories',
+};
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title="Articles"
+  description="Long-form, sourced reporting on health equity for veterans and people of color."
+>
+  <Hero
+    headline="Articles"
+    subhead="Long-form reporting on the conditions, systems, and decisions that shape who gets seen, who gets heard, and who gets treated appropriately."
+  />
+
+  <section class="py-16 max-w-6xl mx-auto px-6">
+    {
+      articles.length === 0 ? (
+        <p class="text-ink-700">No articles published yet. Check back soon.</p>
+      ) : (
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {articles.map((article) => (
+            <Card
+              href={`/articles/${article.id}/`}
+              eyebrow={pillarLabels[article.data.pillar]}
+              title={article.data.title}
+              summary={article.data.summary}
+              meta={`${dateFmt.format(article.data.pubDate)}${article.data.readingTime ? ` · ${article.data.readingTime} min read` : ''}`}
+            />
+          ))}
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>
