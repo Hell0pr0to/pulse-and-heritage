@@ -99,6 +99,41 @@ Every piece should fit one of these:
 
 ---
 
+## Anti-patterns (AI tells to scrub)
+
+These are the patterns AI-generated prose leans on. They are not Allison's voice. Sweep every draft for them before publishing.
+
+**Punctuation**
+
+- **Em-dash overuse.** The em dash is the single biggest tell of AI-drafted prose. Default to a period (Allison's voice is staccato-declarative — periods land harder), then a colon (when introducing a list or elaboration), then a comma. Em dashes are fine in moderation: byline attributions, the rare dramatic aside. If a page has more than one or two, you've over-used.
+- **Double-em-dash parentheticals.** *"In high-acuity care — ICU, oncology, cardiac procedures — and in a VA clinic..."* Restructure with commas or split into sentences.
+
+**Constructions**
+
+- **"Not just X, but Y."** *"Not just medical conditions, but the systems behind them."* Make the point directly. Both halves are true; just say so.
+- **"It's not about A — it's about B."** Same family. State B without dismissing A.
+- **Forced triples.** *"Faster, smarter, better."* Three for the rhythm, not the meaning. Cut to what's true.
+- **Transition word overload.** *"Additionally... Furthermore... Moreover..."* Pick none. Let the next sentence carry itself.
+- **Enthusiastic openers.** *"Great news!" "Exciting update!"* Nothing is exciting; something is true.
+- **Cliché closers.** *"At the end of the day," "Rest assured," "Without further ado."*
+
+**Vocabulary (LLM fingerprints)**
+
+- *delve, navigate the complexities, in the realm of*
+- *unlock the potential, harness the power of*
+- *leverage, synergy, robust, seamless, transformative, innovative, world-class, cutting-edge, best-in-class*
+- *myriad of, tapestry, landscape* (as metaphor), *journey* (non-travel)
+- *empower, elevate, optimize, streamline*
+- *In today's fast-paced world, It's important to note that, First and foremost*
+
+**Hedging**
+
+- *might, perhaps, could potentially, may help, can sometimes.* If you don't know, say you don't know. If you do know, say it.
+
+(For context behind these anti-patterns, see Gabe's canonical reference style guide.)
+
+---
+
 ## Quick self-check before publishing
 
 - Does it use the real clinical term *and* translate it?
@@ -106,4 +141,5 @@ Every piece should fit one of these:
 - Does it speak *to* the reader, not *about* them?
 - Is at least one source cited specifically?
 - Does the reader leave with something they can do?
-- Could this appear word-for-word on WebMD? (If yes — rewrite.)
+- Could this appear word-for-word on WebMD? (If yes, rewrite.)
+- Did you sweep for AI tells (see anti-patterns above)?
